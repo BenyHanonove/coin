@@ -4,46 +4,44 @@ import { screenWidth } from '../../utils/shared';
 import styled ,{css} from 'styled-components/native';
 import { AppColors } from '../../utils/colors';
 
-//Components 
-import WalletControl from '../Sliders/WalletControl';
-
 //Screen Views
 import Withdraw from '../Views/Withdraw';
 import Trade from '../Views/Trade';
 
+// Define an interface for the props of the 'LinearChart' component
 interface LinearChartProps {
   symbol:string;
 }
 
+// Define an array of options for buttons
 const optionArr = [
   {btnStr:"Trade" ,iconName:"cart-outline"},
   {btnStr:"Withdraw" ,iconName:"cash-outline"},
 ];
 
+// Define an array of views
 const viewsArr = [Trade ,Withdraw];
 
+// Create a styled 'View' component
 const StyledView = styled.View`
   align-items: center;
   margin-top: 100px;
 `;
 
-const customWalletControl = css`
-  justify-content:space-evenly;
-  height: 32%;
-  margin: 0px;
-`;
 
 const LinearChart: React.FC<LinearChartProps> = (props) => {
 
 
+  // Define a data object for a chart
   const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Array of labels for the x-axis
     datasets: [
       {
-        data: [10,30,23,42,76,200],
+        data: [10, 30, 23, 42, 76, 200], // Array of data points for the chart
       },
     ],
   };
+
 
   return (
     <StyledView>

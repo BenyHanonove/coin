@@ -10,6 +10,7 @@ import SmallText from '../Texts/SmallText';
 import LinearChart from './LinearChart';
 import { getCoinIcon } from '../../utils/api';
 
+// Define an interface for the props of the 'TransactionBar' component
 interface TransactionBarProps {
     name:string;
     symbol:string;
@@ -19,7 +20,7 @@ interface TransactionBarProps {
     onPress:()=>void;
 };
 
-//Touchable opacity view for the transaction card
+// Touchable opacity view for the transaction card
 const StyledTouchableOpacity = styled.TouchableOpacity`
     display: flex;
     margin: 7px;
@@ -76,6 +77,7 @@ const customAmountText = css`
     top: 58px;
 `;
 
+// View for the coin icon
 const IconView = styled.View`
     position: absolute;
     right: 20px;
@@ -85,42 +87,58 @@ const IconView = styled.View`
 
 const TransactionBar: React.FC<TransactionBarProps> = (props) => {
 
+    // Initialize state variables for priceUp and showGraph
     const [priceUp ,setPriceUp] = useState(true);
     const [showGraph ,setShowGraph] =useState(false);
 
-    const pressHandler = ()=>{
-        props.onPress();
-        setShowGraph(!showGraph)
-    };
-
+    // Initialize state variables for 'price' and 'icon'
     const [price, setPrice] = useState<number>(0);
     const [icon, setIcon] = useState<ImageSourcePropType | null>(null);
-
-    //Use effect to get the coin value
+    
+    // Use effect to fetch the current coin value based on symbol
     useEffect(() => {
-    async function fetchCoinValue() {
-        const coinValue = await getCoinValue(props.name);
-        if (coinValue) {
-        const calculatedPrice = (coinValue * props.amount).toFixed(2);
-        setPrice(parseFloat(calculatedPrice));
+        async function fetchCoinValue() {
+            // Retrieve the current coin value using the 'getCoinValue' function
+            const coinValue = await getCoinValue(props.name);
+            
+            // If a valid coin value is retrieved, calculate the price and update the state
+            if (coinValue) {
+                const calculatedPrice = (coinValue * props.amount).toFixed(2);
+                setPrice(parseFloat(calculatedPrice));
+            }
         }
-    }
-    fetchCoinValue();
+        
+        // Call the 'fetchCoinValue' function when 'props.symbol' changes
+        fetchCoinValue();
     }, [props.symbol]);
 
-    //Use effect to get the coin value
-    useEffect(()=>{
-    async function fetchCoinIcon(){
-        const coinIcon = await getCoinIcon(props.name);
-        if(coinIcon){
-            setIcon({ uri: coinIcon });      
-        }
-    }
-    fetchCoinIcon();
-    },[props.name]);
 
-  return (
-    <StyledTouchableOpacity onPress={pressHandler}>
+    
+    // Use effect to fetch the coin icon based on the coin's name
+    useEffect(() => {
+        async function fetchCoinIcon() {
+            // Retrieve the coin's icon using the 'getCoinIcon' function
+            const coinIcon = await getCoinIcon(props.name);
+            
+            // If a valid coin icon is retrieved, update the 'icon' state
+            if (coinIcon) {
+                setIcon({ uri: coinIcon });
+            }
+        }
+        
+        // Call the 'fetchCoinIcon' function when 'props.name' changes
+        fetchCoinIcon();
+    }, [props.name]);
+
+
+    // Function to handle button press and toggle showGraph state
+    const pressHandler = () => {
+        props.onPress(); // Call the 'onPress' function provided in props
+        setShowGraph(!showGraph); // Toggle the 'showGraph' state
+    };
+
+    return (
+        <StyledTouchableOpacity onPress={pressHandler}>
         <SmallText str={props.name} customCss={customNameText}/>
         <SmallText  str={`${props.amount.toString()} COINS`} customCss={customAmountText}/>
         {icon ? <StyledImage source={icon} /> : null} 
