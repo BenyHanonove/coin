@@ -2,6 +2,7 @@ import React from 'react';
 import styled ,{css} from 'styled-components/native';
 import { AppColors } from '../../utils/colors';
 
+// Define an interface for the props of the 'SmallText' component
 interface SmallTextProps {
   str:string;
   handelPress?(): void;
@@ -11,16 +12,18 @@ interface SmallTextProps {
 
 const SmallText: React.FC<SmallTextProps> = (props) => {
 
+  // Define default CSS styles for the text
   const defaultCss = css`
   font-size: 17px;
   color: ${AppColors.text};
   text-align: left;
-`;
+  `;
 
-const StyledText = styled.Text`
-${defaultCss}
-${props.customCss}; 
-`;
+  // Create a styled 'Text' component with default and custom CSS
+  const StyledText = styled.Text`
+  ${defaultCss}
+  ${props.customCss}; 
+  `;
 
   return (
     <StyledText onPress={props.handelPress}>
