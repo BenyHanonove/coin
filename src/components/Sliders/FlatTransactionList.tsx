@@ -8,6 +8,7 @@ import RegularText from '../Texts/RegularText';
 import TransactionCard from "../Cards/TransactionCard";
 
 
+// Create a styled 'View' component with specific styles for content layout
 const StyledView = styled.View`
   flex: 1;
   padding: 15px;
@@ -15,9 +16,12 @@ const StyledView = styled.View`
 
 const FlatListWithCards: React.FC = () => {
   
-  const renderItem = ({ item }: { item: { id: string; header: string; amount: number; symbol: string ;name:string}}) => (
+  // Define a function to render individual items within a list
+  const renderItem = ({ item }: { item: { id: string; header: string; amount: number; symbol: string; name: string } }) => (
+    // Render a 'TransactionCard' component with specific item properties
     <TransactionCard header={item.header} amount={item.amount} symbol={item.symbol} name={item.name} />
   );
+
 
   return (
     <StyledView>

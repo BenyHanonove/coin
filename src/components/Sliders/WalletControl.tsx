@@ -3,11 +3,13 @@ import styled ,{css} from 'styled-components/native';
 import { screenWidth } from '../../utils/shared';
 import WalletBtn from '../Buttons/WalletBtn';
 
+// Define an interface for individual wallet button options
 export interface walletBtnOption {
   btnStr: string;
   iconName: string;
-}
+};
 
+// Define an interface for the props of the 'WalletControl' component
 interface WalletControlProps {
   optionArr:walletBtnOption[];
   customCss?:ReturnType<typeof css>;
@@ -16,6 +18,7 @@ interface WalletControlProps {
 
 const WalletControl: React.FC<WalletControlProps> = (props) => {
 
+  // Create a styled 'View' component with specific styles for a wallet control container
   const StyledView = styled.View`
     width: ${screenWidth};
     height: 21%;
