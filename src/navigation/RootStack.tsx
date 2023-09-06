@@ -16,11 +16,10 @@ export type RootStackParamList = {
     Signin:any;
 };
 
+//Interface that pass user activate / deactivate
 interface RootStackProps {
   flipUser:()=>void;
 }
-
-
 
 const Stack = createStackNavigator<RootStackParamList>();
 
