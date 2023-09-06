@@ -8,10 +8,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import BigText from '../Texts/BigText';
 import { AppColors } from '../../utils/colors';
 
+// Interface for Credit Card Button Props
 interface CreditCardBtnProps {
   press:()=>void;
 }
 
+// Create a styled 'TouchableOpacity' component for the Credit Card Button
 const StyledTouchableOpacity = styled.TouchableOpacity`
     width: ${screenWidth*0.9};
     margin: 20px;
@@ -23,58 +25,77 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
     display: flex;
 `;
 
+// Define custom CSS for the text inside the button
 const customBigText = css`
     color: ${AppColors.background};
 `;
 
 const CreditCardBtn: React.FC<CreditCardBtnProps> = (props) => {
 
+  // Create a ref to hold the animated value
   const animatedValue = useRef(new Animated.Value(0)).current;
+
+  // Create a ref to hold the looped animation
   const loopedAnimation = useRef<Animated.CompositeAnimation | null>(null);
 
   useEffect(() => {
+    // Duration and value for the move animations
     const moveDuration = 700;
     const moveValue = 5;
-
+  
+    // Define up animation
     const upAnimation = Animated.timing(animatedValue, {
       toValue: -moveValue,
       duration: moveDuration,
       useNativeDriver: true,
     });
-
+  
+    // Define down animation
     const downAnimation = Animated.timing(animatedValue, {
       toValue: moveValue,
       duration: moveDuration,
       useNativeDriver: true,
     });
-
+  
+    // Define center animation
     const centerAnimation = Animated.timing(animatedValue, {
       toValue: 0,
       duration: moveDuration,
       useNativeDriver: true,
     });
-
+  
+    // Create an animation sequence
     const animationSequence = Animated.sequence([downAnimation, upAnimation, centerAnimation]);
+  
+    // Create a looped animation
     loopedAnimation.current = Animated.loop(animationSequence);
-
+  
+    // Start the looped animation
     loopedAnimation.current.start();
-
+  
+    // Cleanup function to stop the animation on unmount
     return () => {
       if (loopedAnimation.current) {
         loopedAnimation.current.stop();
-      }
+      };
     };
-  }, [animatedValue]);
+    }, [animatedValue]);
 
+
+  // Function to stop the looped animation
   const stopAnimation = () => {
     if (loopedAnimation.current) {
       loopedAnimation.current.stop();
     }
   };
+
   
 
-  const pressHandler = () =>{
+  // Function to handle button press
+  const pressHandler = () => {
+    // Stop the animation when the button is pressed
     stopAnimation();
+    // Trigger the provided press function
     props.press();
   };
 
