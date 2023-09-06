@@ -5,12 +5,14 @@ import { screenWidth } from '../../utils/shared';
 import { asset } from '../../utils/data';
 import { AppColors } from '../../utils/colors';
 
+// Define an interface for the props of the 'AssetsSelector' component
 interface AssetsSelectorProps {
     arr:asset[];
     header:string;
     onChange: (obj: asset) => void;
-}
+};
 
+// Create a styled 'View' component with specific styles for asset selection
 const StyledView  = styled.View`
     height: 50px;
     width: ${screenWidth*0.8};
@@ -24,9 +26,10 @@ const StyledView  = styled.View`
 
 const AssetsSelector: React.FC<AssetsSelectorProps> = (props) => {
 
+  //State for item select
   const [selectedItem, setSelectedItem] = useState<asset | null>(null);
 
-
+  // Handle the change in the selected item value
   const handleChange = (itemValue: asset | null) => {
     if (itemValue !== null) {
       setSelectedItem(itemValue);

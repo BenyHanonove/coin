@@ -1,19 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/native';
-
 import { screenWidth } from '../../utils/shared';
 import { AppColors } from '../../utils/colors';
 
-
-
-
+// Define an interface for the props of the 'FormInput' component
 interface FormInputProps {
   tag:string;
   secret:boolean;
   onChangeText?(str:string):void;
-
 };
 
+// Create a styled 'TextInput' component with specific styles for input fields
 const StyleInput = styled.TextInput`
     width:${screenWidth*0.8}px;
     height: 50px;
@@ -29,9 +26,11 @@ const StyleInput = styled.TextInput`
 
 const FormInput: React.FC<FormInputProps> = (props) => {
   
-
-  const buttonDown = (str:string)=>{
-    if(props.onChangeText){
+  // Define a function to handle button presses and trigger the 'onChangeText' function if provided in props
+  const buttonDown = (str: string) => {
+    // Check if the 'onChangeText' function is provided in props
+    if (props.onChangeText) {
+      // Call the 'onChangeText' function with the provided string
       props.onChangeText(str);
     }
   };

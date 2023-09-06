@@ -5,12 +5,14 @@ import { screenWidth } from '../../utils/shared';
 import { card } from '../../utils/data';
 import { AppColors } from '../../utils/colors';
 
-interface SelectorProps {
+// Define an interface for the props of the 'CardInput' component
+interface CardSelectorProps {
   arr: card[];
   header:string;
   onChange: (obj: card) => void;
 };
 
+// Create a styled 'View' component with specific styles for input container
 const StyledView  = styled.View`
     height: 50px;
     width: ${screenWidth*0.8};
@@ -22,18 +24,23 @@ const StyledView  = styled.View`
 `;
 
 
-const Selector: React.FC<SelectorProps> = (props) => {
+const CardSelector: React.FC<CardSelectorProps> = (props) => {
 
+  //State to selected item
   const [selectedItem, setSelectedItem] = useState<card | null>(null);
 
-    const handleChange = (itemValue: card | null) => {
-      if (itemValue !== null) {
-        setSelectedItem(itemValue);
-        props.onChange(itemValue);
-      }
-    };
+  // Define a function to handle changes in the selected item value
+  const handleChange = (itemValue: card | null) => {
+    // Check if 'itemValue' is not null
+    if (itemValue !== null) {
+      // Update the 'selectedItem' state with the new value
+      setSelectedItem(itemValue);
+      
+      // Call the 'onChange' function provided in props with the new value
+      props.onChange(itemValue);
+    }
+  };
   
-
   return (
     <StyledView>
         <Picker
@@ -51,4 +58,4 @@ const Selector: React.FC<SelectorProps> = (props) => {
   );
 }
 
-export default Selector;
+export default CardSelector;

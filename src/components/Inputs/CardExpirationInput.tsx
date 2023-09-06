@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled ,{css}  from 'styled-components/native';
 
+// Define an interface for the props of the 'CardExpirationInput' component
 interface CardExpirationInputProps {
     holder:string;
     onType:(str:string)=>void;
@@ -9,10 +10,12 @@ interface CardExpirationInputProps {
 
 const CardExpirationInput: React.FC<CardExpirationInputProps> = (props) => {
 
+    // Create a styled 'TextInput' component with custom CSS applied
     const StyledTextInput = styled.TextInput`
         ${props.customCss};
     `;
 
+    //State for expiration  
     const [expiration ,setExpiration] = useState("");
 
     const handelType = (str:string) =>{
