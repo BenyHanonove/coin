@@ -6,7 +6,7 @@ import { css } from 'styled-components';
 import BigText from '../components/Texts/BigText';
 import TransactionScrollView from '../components/Sliders/TransactionScrollView';
 
-
+// Define a custom CSS snippet for big text
 const customBigText = css`
   margin: 20px;
 `;

@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Container } from '../utils/shared';
 import { css } from 'styled-components';
+import { RouteProp } from '@react-navigation/native';
 
 //Components
-import BIgText from '../components/Texts/BigText';
+import BigText from '../components/Texts/BigText';
 import FormInput from '../components/Inputs/FormInput';
 import RegularBtn from '../components/Buttons/RegularBtn';
 import SmallText from '../components/Texts/SmallText';
-import { RouteProp } from '@react-navigation/native';
-
+import AlertMessage from '../components/Alerts/AlertMessage';
 
 //Navigation
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStack';
 import { useNavigation } from '@react-navigation/native';
-import AlertMessage from '../components/Alerts/AlertMessage';
 
 type SigninScreenRouteProp = RouteProp<RootStackParamList, 'Signin'>;
 interface SigninScreenProps {
@@ -74,7 +73,7 @@ const SigninScreen: React.FC<SigninScreenProps> = (props) => {
   };
 
 
-  //Function that handels when alert is closed after timeout
+  //Function that handles when alert is closed after timeout
   const alertHandler = () =>{
     setAlertText("")
     setAlertTitle("");
@@ -84,7 +83,7 @@ const SigninScreen: React.FC<SigninScreenProps> = (props) => {
   return (
     <Container style={{justifyContent:"center"}}>
 
-      <BIgText str='Sign in'/>
+      <BigText str='Sign in'/>
 
       <FormInput
         secret={false}

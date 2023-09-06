@@ -14,12 +14,8 @@ import RegularBtn from '../components/Buttons/RegularBtn';
 import FormInput from '../components/Inputs/FormInput';
 import SmallText from '../components/Texts/SmallText';
 
-interface SignupScreenProps {
-  // define props
-}
 
-
-const SignupScreen: React.FC<SignupScreenProps> = () => {
+const SignupScreen: React.FC = () => {
 
   //Navigation props
   type SignupScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Signup'>;

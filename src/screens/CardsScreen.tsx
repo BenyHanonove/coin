@@ -22,16 +22,19 @@ export interface Card {
   expirationDate: string;
 }
 
+// Define a custom CSS snippet for big text with bold font and margin
 const customBigText = css`
   font-weight: bold;
   margin: 20px;
 `;
 
+// Create a styled 'TouchableOpacity' component for a back arrow button
 const BackArrowView = styled.TouchableOpacity`
   position: absolute;
   top: 10px;
   left: 10px;
 `;
+
 
 
 const CardsScreen: React.FC<CardsScreenProps> = () => {

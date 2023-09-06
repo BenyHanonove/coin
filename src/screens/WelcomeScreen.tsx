@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from '../utils/shared';
+import { css } from 'styled-components';
 
 // Components
 import BigText from '../components/Texts/BigText';
@@ -12,7 +13,6 @@ import TopLottie from '../components/Views/TopLottie';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/RootStack';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { css } from 'styled-components';
 
 // Welcome message and description
 const welcomeMsg = "Welcome to Coinnecta";
