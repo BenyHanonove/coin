@@ -13,10 +13,13 @@ import { getCoinValue } from '../../utils/api';
 import { userDataTemplate } from '../../utils/data';
 import AlertMessage from '../Alerts/AlertMessage';
 
+// Define an interface for Withdraw component props
 interface TradeProps {
   close:()=>void;
-}
+};
 
+
+// StyledView: Represents a styled container for modal content
 const StyledView = styled.View`
   position: absolute;
   background-color: ${AppColors.background};
@@ -27,22 +30,25 @@ const StyledView = styled.View`
   justify-content: center;
 `;
 
-
+// BackArrowView: Represents a styled TouchableOpacity for a back arrow button
 const BackArrowView = styled.TouchableOpacity`
-  z-index: 3;
+  z-index: 4;
   position: absolute;
   top: 85px;
   left: 5px;
 `;
 
+// customBtnCss: Represents a custom CSS snippet for buttons
 const customBtnCss = css`
   margin-top: 20px;
 `;
 
-const customSmallText = css`
+// customBigText: Represents a custom CSS snippet for large text elements
+const customBigText = css`
   margin-top: 20px;
 `;
 
+// customErrorText: Represents a custom CSS snippet for displaying error text in a specific color
 const customErrorText = css`
   color: ${AppColors.error};
   margin-top: 30px;
@@ -144,7 +150,7 @@ const Trade: React.FC<TradeProps> = (props) => {
       onChangeText={(value)=>setAmount((value))}
       />
 
-      <SmallText str={`${amount} X ${coinPrice} = ${(parseFloat(amount) * coinPrice).toFixed(2)}`} customCss={customSmallText} />
+      <SmallText str={`${amount} X ${coinPrice} = ${(parseFloat(amount) * coinPrice).toFixed(2)}`} customCss={customErrorText} />
 
       <RegularBtn BtnText='Buy' customCss={customBtnCss} handelPress={handelPress}/>
 

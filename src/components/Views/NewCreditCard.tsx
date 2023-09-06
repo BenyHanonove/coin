@@ -11,18 +11,19 @@ import CardHolderInput from '../Inputs/CardHolderInput';
 import CardExpirationInput from '../Inputs/CardExpirationInput';
 import RegularBtn from '../Buttons/RegularBtn';
 
-
-
+// Define an interface for the props of the 'NewCreditCard' component
 interface NewCreditCardProps {
   uploadCard:(card:card)=>void;
 };
 
+// Create a styled 'View' component for the 'NewCreditCard' component
 const StyledView = styled.View`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
 
+// Define custom CSS for input elements
 const customInput = css`
   background-color: ${AppColors.background};
   width: ${screenWidth*0.7};
@@ -33,6 +34,7 @@ const customInput = css`
   border-radius:4px;
 `;
 
+// Define custom CSS for buttons
 const customButton = css`
   margin-top: 20px;
 `;
@@ -41,12 +43,8 @@ const customButton = css`
 const NewCreditCard: React.FC<NewCreditCardProps> = (props) => {
 
   //Object to keep the card data
-  const [cardData, setCardData] = useState({
-    number: "",
-    nameHolder: "",
-    expirationDate: "", // Change this property name to match Card type
-  });
-
+  const [cardData, setCardData] = useState<card>({ number: '', nameHolder: '', expirationDate: '' });
+  
   //Function that handles onchange for inputs
   const handelNumber = (str:string)=>{setCardData({...cardData ,number:str})};
   const handelCardHolder = (str:string)=>{setCardData({...cardData ,nameHolder:str})};
