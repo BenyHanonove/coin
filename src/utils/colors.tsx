@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+// Define a collection of color constants for your app
 export const AppColors = {
   peach: '#ffd6ad',
   secondary: '#c2f172',
@@ -14,7 +15,9 @@ export const AppColors = {
   error: '#FF4136',
 };
 
-export const style =StyleSheet.create({
+
+// Define a collection of styles, including a shadow style
+export const style = StyleSheet.create({
   shadow: {
     backgroundColor: 'white',
     shadowColor: 'black',
@@ -23,4 +26,4 @@ export const style =StyleSheet.create({
     shadowRadius: 2,
     elevation: 2,
   },
-})
+});

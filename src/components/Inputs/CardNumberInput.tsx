@@ -18,7 +18,7 @@ const CardInput: React.FC<CardInputProps> = (props) => {
 
 
 
-    //Function that handels the input field by user 
+    //Function that handles the input field by user 
     const handleType = (str:string) => {
         const digitsOnly = str.replace(/\D/g, '');
         const truncatedDigits = digitsOnly.slice(0, 16);

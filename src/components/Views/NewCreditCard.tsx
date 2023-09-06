@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled ,{css} from "styled-components/native";
 import { AppColors } from '../../utils/colors';
 import { screenWidth } from '../../utils/shared';
+import { card } from '../../utils/data';
 
 //Components 
 import InteractiveCard from '../Cards/InteractiveCard';
@@ -10,10 +11,10 @@ import CardHolderInput from '../Inputs/CardHolderInput';
 import CardExpirationInput from '../Inputs/CardExpirationInput';
 import RegularBtn from '../Buttons/RegularBtn';
 
-import {Card} from "../../screens/CardsScreen"
+
 
 interface NewCreditCardProps {
-  uploadCard:(card:Card)=>void;
+  uploadCard:(card:card)=>void;
 };
 
 const StyledView = styled.View`
@@ -46,7 +47,7 @@ const NewCreditCard: React.FC<NewCreditCardProps> = (props) => {
     expirationDate: "", // Change this property name to match Card type
   });
 
-  //Function that handels onchange for inputs
+  //Function that handles onchange for inputs
   const handelNumber = (str:string)=>{setCardData({...cardData ,number:str})};
   const handelCardHolder = (str:string)=>{setCardData({...cardData ,nameHolder:str})};
   const handelCardExpiration = (str:string)=>{setCardData({...cardData ,expirationDate:str})};

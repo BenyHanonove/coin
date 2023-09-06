@@ -47,7 +47,7 @@ const WalletBtn: React.FC<WalletBtnProps> = (props) => {
       </StyledTouchableOpacity>
 
       {showView ? <props.view close={flipShowView}/> : null}
-     </>
+      </>
   );
 }
 

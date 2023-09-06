@@ -2,7 +2,11 @@ import React from 'react';
 import styled ,{css} from 'styled-components/native';
 import { screenWidth } from '../../utils/shared';
 import WalletBtn from '../Buttons/WalletBtn';
-import { walletBtnOption } from '../../utils/types';
+
+export interface walletBtnOption {
+  btnStr: string;
+  iconName: string;
+}
 
 interface WalletControlProps {
   optionArr:walletBtnOption[];
